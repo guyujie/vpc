@@ -194,7 +194,7 @@ curl -X POST $rias_endpoint/v1/instances \
           }
         },
         "keys":[{"id": "'$key'"}],
-        "flavor": {
+        "profile": {
           "name": "'$profile_name'"
          },
         "image": {
