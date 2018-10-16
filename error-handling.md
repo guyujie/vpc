@@ -72,6 +72,73 @@ Here are some model code examples for error handling in the IBM Cloud VPC Beta A
   ]
 }
 ```
+## Success 201 Example Code for Instance
+
+```
+201 The instance was created successfully
+
+{
+  "cpu": {
+    "architecture": "amd64",
+    "cores": 2,
+    "frequency": 2000
+  },
+  "created_at": "2018-10-16T07:12:30.624Z",
+  "crn": "crn:v1:staging:public:is:us-south-3:a/823bd195e9fd4f0db40ac2e1bffef3e0::instance:a924854c-a366-4f52-8830-07bbb366ebf8",
+  "href": "https://us-south-stage02.iaasdev.cloud.ibm.com/v1/instances/a924854c-a366-4f52-8830-07bbb366ebf8",
+  "id": "a924854c-a366-4f52-8830-07bbb366ebf8",
+  "image": {
+    "crn": "crn:v1:staging:public:is:us-south:a/823bd195e9fd4f0db40ac2e1bffef3e0::image:7eb4e35b-4257-56f8-d7da-326d85452591",
+    "href": "https://us-south-stage02.iaasdev.cloud.ibm.com/v1/images/7eb4e35b-4257-56f8-d7da-326d85452591",
+    "id": "7eb4e35b-4257-56f8-d7da-326d85452591",
+    "name": "ubuntu-16.04-amd64"
+  },
+  "memory": 8,
+  "name": "instance-test",
+  "network_interfaces": [
+    {
+      "href": "https://us-south-stage02.iaasdev.cloud.ibm.com/v1/instances/a924854c-a366-4f52-8830-07bbb366ebf8/network_interfaces/2257504b-6a3d-4519-b0ae-2cdfedf1dd5d",
+      "id": "2257504b-6a3d-4519-b0ae-2cdfedf1dd5d",
+      "name": "written-scary-pranker-viewpoint-curator-papaya",
+      "primary_ipv4_address": "192.168.88.15",
+      "subnet": {
+        "crn": "crn:v1:staging:public:is:us-south-3:a/823bd195e9fd4f0db40ac2e1bffef3e0::subnet:db3aaf1c-ef91-4df8-9f95-9033a9964e7a",
+        "href": "https://us-south-stage02.iaasdev.cloud.ibm.com/v1/subnets/db3aaf1c-ef91-4df8-9f95-9033a9964e7a",
+        "id": "db3aaf1c-ef91-4df8-9f95-9033a9964e7a",
+        "name": "dont-delete-cland-function-test-subnet-dal13"
+      }
+    }
+  ],
+  "primary_network_interface": {
+    "href": "https://us-south-stage02.iaasdev.cloud.ibm.com/v1/instances/a924854c-a366-4f52-8830-07bbb366ebf8/network_interfaces/2257504b-6a3d-4519-b0ae-2cdfedf1dd5d",
+    "id": "2257504b-6a3d-4519-b0ae-2cdfedf1dd5d",
+    "name": "written-scary-pranker-viewpoint-curator-papaya",
+    "primary_ipv4_address": "192.168.88.15",
+    "subnet": {
+      "crn": "crn:v1:staging:public:is:us-south-3:a/823bd195e9fd4f0db40ac2e1bffef3e0::subnet:db3aaf1c-ef91-4df8-9f95-9033a9964e7a",
+      "href": "https://us-south-stage02.iaasdev.cloud.ibm.com/v1/subnets/db3aaf1c-ef91-4df8-9f95-9033a9964e7a",
+      "id": "db3aaf1c-ef91-4df8-9f95-9033a9964e7a",
+      "name": "dont-delete-cland-function-test-subnet-dal13"
+    }
+  },
+  "profile": {
+    "crn": "crn:v1:staging:public:is:us-south:a/823bd195e9fd4f0db40ac2e1bffef3e0::instance-profile:b-2x8",
+    "href": "https://us-south-stage02.iaasdev.cloud.ibm.com/v1/instance/profiles/b-2x8",
+    "name": "b-2x8"
+  },
+  "status": "pending",
+  "vpc": {
+    "crn": "crn:v1:staging:public:is::a/823bd195e9fd4f0db40ac2e1bffef3e0::vpc:c3d2f124-72de-4553-b2d6-67725d4cda78",
+    "href": "https://us-south-stage02.iaasdev.cloud.ibm.com/v1/vpcs/c3d2f124-72de-4553-b2d6-67725d4cda78",
+    "id": "c3d2f124-72de-4553-b2d6-67725d4cda78",
+    "name": "dont-delete-cland-function-test-vpc-dal13"
+  },
+  "zone": {
+    "href": "https://us-south-stage02.iaasdev.cloud.ibm.com/v1/regions/us-south/zones/us-south-3",
+    "name": "us-south-3"
+  }
+}
+```
 
 ## Success 201 Example Code for ACL
 
@@ -142,21 +209,21 @@ Here are some model code examples for error handling in the IBM Cloud VPC Beta A
 ## Failure 400 Example Code
 
 ```
-400 An Invalid Floating IP Template was Provided
+400 An Invalid VPC was Provided
 
 {
   "errors": [
     {
-      "code": "missing_field",
-      "message": "The `flavor.id` field is required.",
-      "more_info": "https://console.bluemix.net/docs/iaas/instances.html#template",
+      "code": "bad_request",
+      "message": "VPC is not found",
+      "more_info": "https://console.bluemix.net/docs/infrastructure/vpc/errors.html#bad_request",
       "target": {
-        "name": "flavor.id",
+        "name": "vpc",
         "type": "field"
       }
     }
   ],
-  "trace": "86780a34-e651-4b47-9fb0-184a169cc9af"
+  "trace": "48a64667b6d97c456ffa11768e91ca9a"
 }
 ```
 
@@ -164,20 +231,20 @@ Here are some model code examples for error handling in the IBM Cloud VPC Beta A
 
 ```
 
-404 The specified Floating IP could not be found
+404 The specified instance profile could not be found
 
 {
   "errors": [
     {
-      "code": "missing_field",
-      "message": "The `flavor.id` field is required.",
-      "more_info": "https://console.bluemix.net/docs/iaas/instances.html#template",
+      "code": "not_found",
+      "message": "Please check whether the resource you are requesting exists.",
+      "more_info": "https://console.bluemix.net/docs/infrastructure/vpc/errors.html#not_found",
       "target": {
-        "name": "flavor.id",
-        "type": "field"
+        "name": "b-4x4",
+        "type": "profile"
       }
     }
   ],
-  "trace": "86780a34-e651-4b47-9fb0-184a169cc9af"
+  "trace": "73a64667b6d97c456ffa11768e91ca2b"
 }
 ```
