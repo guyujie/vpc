@@ -1065,9 +1065,92 @@ You've referenced a subnet that does not exist. Please review your request to en
 Provide a subnet that is in `available` status. Try again in a few minutes. If this problem persists, [contact support](/docs/infrastructure/vpc?topic=vpc-getting-help-and-support).
 
 ## vpn_gateways_quota_exceeded
+
 **Message**: Quota for VPN gateways exceeded for the account and/or the region.
 
 The quotas per resource are specified on the [Quotas](https://{DomainName}/docs/infrastructure/vpc?topic=vpc-quotas#vpn-quotas){: new_window} page.
 
 To view the current VPN gateways, use the `GET /vpn_gateways` API.
 Equivalent CLI command: `ibmcloud is vpn-gateways`
+
+## instance_invalid_hostname
+
+**Message**: The instance could not be created due to host name is invalid.
+
+The instance hostname must be alphanumeric strings that may be separated by dash '-', and also must begin and end with an alphanumeric character and must be between 1-63 characters in length.
+
+## instance_invalid_port_speed
+
+**Message**: The instance could not be created due to network interface port speed is invalid.
+
+The network interface port speed on interface should be 100 or 1000.
+
+## instance_too_many_keys
+
+**Message**: The Windows instance could not be created due to multiple key in request.
+
+Please just provide one key to create Windows instance.
+
+## Instance_delete_conflict
+
+**Message**: The instance could not be deleted due to the instance status conflict.
+
+Cannot delete instance when it's in deleting, pending, starting, stopping, restarting status.
+
+## instance_sec_volume_over_quota
+
+**Message**: The instance could not be created due to the volume attachments number is over quota.
+
+When the instance CPU cores is less than 4, no more than 4 secondary volumes can be requested.
+
+When the instance CPU cores is equal to or more then 4, no more then 12 secondary volumes can be requested.
+
+## key_exists
+
+**Message**: The key could not be created due to existing already.
+
+The same key content already exists.
+
+## key_invalid_name
+
+**Message**: The key could not be created due to the name is invalid.
+
+The length of key name should not exceed 65, and the leading character should be in [A-Za-z], and the following characters should be in [-A-Za-z0-9_]
+
+## key_invalid_type
+
+**Message**: The key could not be created due to the type is invalid.
+
+The only suppored key type is "rsa".
+
+## volume_name_conflict
+
+**Message**: The volume could not be created duo to name conflict
+
+The volume name should be unique.
+
+## volume_attachment_conflict
+
+**Message**: The volume could not be attached to the instance due to conflict.
+
+The volume is attached to another instance already.
+
+## volume_invalid_boot_volume
+
+**Message**: The requested change to boot volume is invalid.
+
+Boot volumes cannot be detached or renamed, or set to auto-delete.
+
+## resource_zone_inconsistence
+
+**Message**: The request could not be perform due to resource zone inconsistence.
+
+When attache volume, the volume zone should be consistent with instance zone.
+
+When associated floating ip, the floating ip zone should be consistent with the subnet zone.
+
+## validation_non_empty_uuid
+
+**Message**: The request could not be perform due to the resource id is invalid.
+
+The resource id should be UUID and not empty.
