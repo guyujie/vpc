@@ -174,7 +174,10 @@ You may get this error message if a malformed start query is used when making a 
 ## invalid_state
 **Message**: None
 
-An action was requested on a resource which is not supported at the current state of the resource. For example, a reboot operation may already be in progress for an instance. Refer to [actions allowed](/docs/infrastructure/vpc?topic=vpc-troubleshooting-your-ibm-cloud-vpc#error-409-conflict-when-invoking-an-action-on-an-instance) depending on the state of the instance.
+An action was requested on a resource which is not supported at the current state of the resource. For example
+
+1. a reboot operation may already be in progress for an instance. Refer to [actions allowed](/docs/infrastructure/vpc?topic=vpc-troubleshooting-your-ibm-cloud-vpc#error-409-conflict-when-invoking-an-action-on-an-instance) depending on the state of the instance.
+2. If the instance status is "pending", you could not delete the instance, attach volume to the instance, detach volume from the instance, change the instance. There is currently an outstanding transaction for this instance, so please try your action again later.
 
 If the state of the resource does not change in a timely manner, [contact support](/docs/infrastructure/vpc?topic=vpc-getting-help-and-support).
 
@@ -1065,7 +1068,6 @@ You've referenced a subnet that does not exist. Please review your request to en
 Provide a subnet that is in `available` status. Try again in a few minutes. If this problem persists, [contact support](/docs/infrastructure/vpc?topic=vpc-getting-help-and-support).
 
 ## vpn_gateways_quota_exceeded
-
 **Message**: Quota for VPN gateways exceeded for the account and/or the region.
 
 The quotas per resource are specified on the [Quotas](https://{DomainName}/docs/infrastructure/vpc?topic=vpc-quotas#vpn-quotas){: new_window} page.
@@ -1140,6 +1142,12 @@ The volume is attached to another instance already.
 **Message**: The requested change to boot volume is invalid.
 
 Boot volumes cannot be detached or renamed, or set to auto-delete.
+
+## volume_invalid_encryption_key
+
+**Message**: The instance could not be created due to the volume encryption key is over invalid.
+
+The volume encryption key validation is failed.
 
 ## resource_zone_inconsistence
 
