@@ -1101,11 +1101,10 @@ Cannot delete instance when it's in deleting, pending, starting, stopping, resta
 
 ## instance_sec_volume_over_quota
 
-**Message**: The instance could not be created due to the volume attachments number is over quota.
+**Message**: The instance could not be created due to the volume attachments number would exceed the quota.
 
-When the instance CPU cores is less than 4, no more than 4 secondary volumes can be requested.
-
-When the instance CPU cores is equal to or more then 4, no more then 12 secondary volumes can be requested.
+1. When creating instance, no more than 4 secondary volumes can be requested.
+2. When attaching volume to existing instnace, if the CPU cores < 4, no more than 4 secondary volumes can be requested, and if the CPU cores >= 4, no more then 12 secondary volumes can be requested.
 
 ## key_exists
 
@@ -1145,9 +1144,18 @@ Boot volumes cannot be detached or renamed, or set to auto-delete.
 
 ## volume_invalid_encryption_key
 
-**Message**: The instance could not be created due to the volume encryption key is over invalid.
+**Message**: The instance could not be created due to the volume encryption key is invalid.
 
 The volume encryption key validation is failed.
+
+## volume_invalid_profile
+
+**Message**: The instance could not be created due to volume profile validation failure.
+
+Please check your request:
+
+1. You should specify the volume profile name for secondary volume.
+2. You should not specify the `iops` for non-custom profile.
 
 ## resource_zone_inconsistence
 
